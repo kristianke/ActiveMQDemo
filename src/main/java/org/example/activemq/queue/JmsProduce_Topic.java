@@ -19,7 +19,7 @@ public class JmsProduce_Topic {
 
         MessageProducer producer = session.createProducer(topic);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             TextMessage textMessage = session.createTextMessage("msg---" + i);
             producer.send(textMessage);
         }

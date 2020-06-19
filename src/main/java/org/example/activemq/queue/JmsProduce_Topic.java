@@ -19,9 +19,16 @@ public class JmsProduce_Topic {
 
         MessageProducer producer = session.createProducer(topic);
 
+
         for (int i = 0; i < 5; i++) {
             TextMessage textMessage = session.createTextMessage("msg---" + i);
+            if (i == 2)
+            textMessage.setStringProperty("tag","vip");
             producer.send(textMessage);
+
+            MapMessage mapMessage = session.createMapMessage();
+            mapMessage.setInt("mkey",i*i);
+            producer.send(mapMessage);
         }
         producer.close();
         session.close();

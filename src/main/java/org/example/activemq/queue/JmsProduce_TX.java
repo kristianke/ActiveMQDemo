@@ -4,9 +4,9 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
 
-public class JmsProduce {
+public class JmsProduce_TX {
     static final String BROKER_URL = "tcp://202.85.220.43:61615";
-    static final String QUEUE_NAME = "queue01";
+    static final String QUEUE_NAME = "queue_tx_01";
 
     public static void main(String[] args) throws JMSException {
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(BROKER_URL);
@@ -14,7 +14,7 @@ public class JmsProduce {
         Connection connection = activeMQConnectionFactory.createConnection();
         connection.start();
 
-        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
         Queue queue = session.createQueue(QUEUE_NAME);
 
         MessageProducer producer = session.createProducer(queue);
@@ -24,6 +24,7 @@ public class JmsProduce {
             producer.send(textMessage);
         }
         producer.close();
+        session.commit();
         session.close();
         connection.close();
         System.out.println("Messages had already sent to the mq.");

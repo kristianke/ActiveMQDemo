@@ -5,7 +5,8 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
 public class JMSConsumer {
-    static final String BROKER_URL = "tcp://202.85.220.43:61615";
+    //    static final String BROKER_URL = "tcp://202.85.220.43:61615";
+    static final String BROKER_URL = "tcp://localhost:61616";
     static final String QUEUE_NAME = "queue01";
 
     public static void main(String[] args) throws JMSException {

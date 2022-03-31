@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <springframework>4.3.23.RELEASE</springframework>
+    <springframework>5.3.18</springframework>
   </properties>
 
   <dependencies>
